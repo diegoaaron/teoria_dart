@@ -1,75 +1,121 @@
-import 'package:teoria_dart/teoria_dart.dart' as teoria_dart;
+import 'package:characters/characters.dart';
 
 void main(List<String> arguments) {
-  print('Hello world: ${teoria_dart.calculate()}!');
+  var fullName = '';
 
-  var x = 1;
-  var hex = 0xDEADBEEF;
+  assert(fullName.isEmpty);
 
-  print('$x - $hex');
+  var hitPoints = 0;
+  assert(hitPoints <= 0);
 
-  var exponen = 1.42e5;
+  var unicorn;
+  assert(unicorn == null);
 
-  print(exponen);
+  var iMeantToDOtHIS = 0 / 0;
+  assert(iMeantToDOtHIS.isNaN);
 
-  num xx = 1;
-  xx += 2.5;
+  var lista = [
+    'Cat',
+    'Boat',
+    'Plane',
+  ];
 
-  print(xx);
+  var list1 = [
+    1,
+    2,
+    3,
+  ];
+  assert(list1.length == 3);
+  assert(list1[1] == 2);
 
-  // String -> int
-  var one = int.parse('1');
-  assert(one == 1);
+  list1[1] = 1;
+  assert(list1[1] == 1);
 
-  // String -> double
-  var onePointOne = double.parse('1.1');
-  assert(onePointOne == 1.1);
+  var constantList = const [
+    1,
+    2,
+    3,
+  ];
 
-  // int -> String
-  String oneAsString = 1.toString();
-  assert(oneAsString == '1');
+  var list2 = [1, 2, 3];
 
-  // double -> String
-  String piAsString = 3.14159.toStringAsFixed(2);
-  assert(piAsString == '3.14');
+  var list3 = [0, ...list2];
 
-  assert((3 << 1) == 6);
-  assert((3 | 4) == 7);
-  assert((3 & 4) == 0);
+  assert(list3.length == 4);
 
-  const msPerSecond = 1000;
-  const secondsUntilRetry = 5;
-  const msUntilRetry = secondsUntilRetry * msPerSecond;
+  var list4 = [0, ...?list2];
 
-  print(msUntilRetry);
+  print(list4.length);
+  assert(list4.length == 4);
 
-  var s1 = 'Single quotes work well for string literals';
-  var s2 = "Double quotes work just as well";
-  var s3 = 'It\'s easy to escape the string delimeter';
-  var s4 = "It's even easir to use the other delimeter";
+  var promoActive = true;
 
-  var s = 'string interpolation';
+  var nav = ['Home', 'Furniture', 'Plants', if (promoActive) 'Outlet'];
+  assert(nav.length == 4);
 
-  assert('Dart has $s, which is very handy.' ==
-      'Dart has string interpolation, ' 'which is very handy.');
-  assert('That deserves all caps. ' '${s.toUpperCase()} is very handy!' ==
-      'That deserves all caps. ' 'STRING INTERPOLATION is very handy!');
+  var listOfInts = [1, 2, 3];
+  var listOfStrings = ['#0', for (var i in listOfInts) '#$i'];
+  assert(listOfStrings[1] == '#1');
 
-  var s22 = 'The + operator ' + 'works, as well.';
-  assert(s22 == 'The + operator works, as well.');
+  var halogens = {'fluorine', 'chlorine', 'bromine', 'iodine', 'astantine'};
 
-  var lxy = r'In a raw string, not even \n gets special treatment.';
-  print(lxy);
+  var names = <String>{};
+  Set<String> names2 = {};
+  // var names3 = {}  crea un map y no un set
 
-  const aConstNum = 0;
-  const aConstBool = true;
-  const aConstString = 'a constant string';
+  var elements = <String>{};
+  elements.add('FLORO');
+  elements.addAll(halogens);
 
-  var aNum = 0;
-  var aBool = true;
-  var aString = 'a string';
-  const aConstList = [1, 2, 3];
+  assert(elements.length == 6);
 
-  const validConstString = '$aConstNum $aConstBool $aConstString';
-  // const invalidConstString = '$aNum $aBool $aString $aConstList';
+  final constantSet = const {
+    'fluorine',
+    'chlorine',
+    'bromine',
+    'iodine',
+    'astantine',
+  };
+
+  // constantSet.add('hlx'); mandaria un error
+
+  var gifts = {
+    // Key: Value
+    'first': 'partridge',
+    'seconds': 'turtledoves',
+    'fifth': 'golden rings'
+  };
+
+  var nobleGases = {
+    2: 'helium',
+    10: 'neon',
+    18: 'argon',
+  };
+
+  var gifts2 = Map<String, String>();
+  gifts2['first'] = 'partridge';
+  gifts2['second'] = 'turtledoves';
+  gifts2['fifth'] = 'golden rings';
+
+  var nobleGases2 = Map<int, String>();
+  nobleGases[2] = 'helium';
+  nobleGases2[10] = 'neon';
+  nobleGases[18] = 'argon';
+
+  var gifts3 = {'firts': 'partirdig'};
+  gifts3['fourth'] = 'calling bird';
+
+  assert(gifts3['fourth'] == 'calling bird');
+
+  var giftss = {'first': 'partidge'};
+  assert(giftss['firstx'] == null);
+
+  assert(giftss.length == 1);
+
+  var hi = 'Hi 🇩🇰';
+  print(hi);
+  print('The end of the string: ${hi.substring(hi.length - 1)}');
+  print('The last character: ${hi.characters.last}\n');
+
+  print('finish');
 }
